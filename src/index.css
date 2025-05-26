@@ -1,0 +1,55 @@
+* {
+	box-sizing: border-box;
+}
+
+.app {
+	height: 100vh;
+	display: flex;
+	width: 100%;
+	background: #F2F3F7;
+}
+
+.main {
+	border: 1px solid;
+	flex-grow: 1;
+}
+
+.btn {
+	padding: 8px 12px;
+	background-color: blue;
+	color: white;
+}
+
+.input {
+	display: flex;
+	flex-direction: column;
+}
+
+.transactions {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.transaction {
+	padding: 16px;
+	border: 1px solid;
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 16px;
+}
+
+.sidebar > div {
+	width: fit-content;
+	padding: 8px;
+	border: 1px solid;
+}
+
+.active {
+	background-color: black;
+	color: white;
+}
