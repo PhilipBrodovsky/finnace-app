@@ -6,6 +6,7 @@ import { TransactionsPage } from "./pages/TransactionsPage/TransactionsPage";
 import { Link, Route, useLocation } from "wouter";
 import { Card } from "./components/Card/Card";
 import { AuthContext } from "./contexts/AuthContext/AuthContext";
+import { useIsMobile } from "./hooks/useIsMobile";
 
 const PAGES = {
 	PAGE1: "page1",
@@ -20,7 +21,9 @@ export function App() {
 
 	const [_, navigate] = useLocation();
 
-	console.log("App user", user);
+	const isMobile = useIsMobile();
+
+	console.log("App isMobile", isMobile);
 
 	// return <TransactionsPage />;
 

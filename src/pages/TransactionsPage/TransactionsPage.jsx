@@ -7,6 +7,8 @@ async function getTransactions() {
 	return await res.json();
 }
 
+function useIsMobile() {}
+
 // let transactions = await getTransactions();
 
 export function TransactionsPage() {
