@@ -1,17 +1,15 @@
 // https://jsonplaceholder.typicode.com/posts
 
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 async function getTransactions() {
 	const res = await fetch("https://jsonplaceholder.typicode.com/posts");
 	return await res.json();
 }
 
-function useIsMobile() {}
-
 // let transactions = await getTransactions();
 
-export function TransactionsPage() {
+export const TransactionsPage = memo(function TransactionsPage() {
 	//
 	const [transactions, setTransactions] = useState([]);
 
@@ -37,4 +35,4 @@ export function TransactionsPage() {
 			})}
 		</div>
 	);
-}
+});

@@ -11,8 +11,6 @@ export function useIsMobile() {
 
 	useEffect(() => {
 		const callback = () => {
-			console.log("1");
-
 			setIsMobile(getIsMobile());
 		};
 
