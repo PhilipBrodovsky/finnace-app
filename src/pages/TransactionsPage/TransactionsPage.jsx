@@ -36,6 +36,3 @@ export const TransactionsPage = memo(function TransactionsPage() {
 		</div>
 	);
 });
-
-
-// todo
