@@ -8,6 +8,7 @@ import { Card } from "./components/Card/Card";
 import { AuthContext } from "./contexts/AuthContext/AuthContext";
 import { useIsMobile } from "./hooks/useIsMobile";
 import HomePage from "./pages/HomePage/HomePage";
+import { WIthMobile } from "./util-components/WIthMobile";
 
 const PAGES = {
 	PAGE1: "page1",
@@ -37,7 +38,12 @@ export function App() {
 			{/* <Sidebar page={page} prop="philip" /> */}
 			<div className="main">
 				<Route path="/">
-					<HomePage />
+					<WIthMobile>
+						{(isMobile) => {
+							console.log("isMobile", isMobile);
+							return <HomePage />;
+						}}
+					</WIthMobile>
 				</Route>
 
 				<Route path="/transactions">
