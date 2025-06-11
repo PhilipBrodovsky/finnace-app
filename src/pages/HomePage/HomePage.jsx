@@ -1,4 +1,5 @@
 import { BudgetCard } from "../../components/BudgetCard/BudgetCard";
+import { WithProtectedRoute } from "../../util-components/ProtectedRoute";
 
 const budget = {
 	id: "1",
@@ -8,7 +9,9 @@ const budget = {
 	theme: "blue",
 };
 
-export function HomePage() {
+function HomePage(props) {
+	console.log("HomePage", props);
+
 	return (
 		<div
 			style={{
@@ -25,3 +28,7 @@ export function HomePage() {
 		</div>
 	);
 }
+
+const ProtectedHomePage = WithProtectedRoute(HomePage);
+
+export default ProtectedHomePage;

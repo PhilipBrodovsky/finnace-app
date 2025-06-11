@@ -7,7 +7,7 @@ import { Link, Route, useLocation } from "wouter";
 import { Card } from "./components/Card/Card";
 import { AuthContext } from "./contexts/AuthContext/AuthContext";
 import { useIsMobile } from "./hooks/useIsMobile";
-import { HomePage } from "./pages/HomePage/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 
 const PAGES = {
 	PAGE1: "page1",
@@ -32,25 +32,6 @@ export function App() {
 
 	// return <LoginForm />;
 
-	// useEffect(() => {
-	// 	if (!user) {
-	// 		navigate("/login");
-	// 	}
-	// }, [user]);
-
-	// if (!user) {
-	// 	return (
-	// 		<>
-	// 			<Route path="/login">
-	// 				<LoginPage />
-	// 			</Route>
-	// 			<Route path="/signup">
-	// 				<SignupPage />
-	// 			</Route>
-	// 		</>
-	// 	);
-	// }
-
 	return (
 		<div className="app">
 			{/* <Sidebar page={page} prop="philip" /> */}
@@ -64,6 +45,12 @@ export function App() {
 				</Route>
 				<Route path="/budgets" nest>
 					<Page2 />
+				</Route>
+				<Route path="/login">
+					<LoginPage />
+				</Route>
+				<Route path="/signup">
+					<SignupPage />
 				</Route>
 			</div>
 		</div>

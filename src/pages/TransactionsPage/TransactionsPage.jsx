@@ -1,6 +1,7 @@
 // https://jsonplaceholder.typicode.com/posts
 
 import { memo, useEffect, useState } from "react";
+import { WithProtectedRoute } from "../../util-components/ProtectedRoute";
 
 async function getTransactions() {
 	const res = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -9,7 +10,7 @@ async function getTransactions() {
 
 // let transactions = await getTransactions();
 
-export const TransactionsPage = memo(function TransactionsPage() {
+const _TransactionsPage = memo(function TransactionsPage() {
 	//
 	const [transactions, setTransactions] = useState([]);
 
@@ -36,3 +37,5 @@ export const TransactionsPage = memo(function TransactionsPage() {
 		</div>
 	);
 });
+
+export const TransactionsPage = WithProtectedRoute(_TransactionsPage);
