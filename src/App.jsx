@@ -9,6 +9,9 @@ import { AuthContext } from "./contexts/AuthContext/AuthContext";
 import { useIsMobile } from "./hooks/useIsMobile";
 import HomePage from "./pages/HomePage/HomePage";
 import { WIthMobile } from "./util-components/WIthMobile";
+import { api } from "./api";
+import { transactionsSlice } from "./store/transactionsSlice";
+import { useDispatch } from "react-redux";
 
 const PAGES = {
 	PAGE1: "page1",
@@ -23,15 +26,25 @@ export function App() {
 
 	const [_, navigate] = useLocation();
 
-	const isMobile = useIsMobile();
+	const dispatch = useDispatch();
 
-	console.log("App isMobile", isMobile);
+	const isMobile = useIsMobile();
 
 	// return <TransactionsPage />;
 
 	// return <SignupForm />;
 
 	// return <LoginForm />;
+
+	useEffect(() => {
+		// load transactions
+		dispatch(transactionsSlice.actions.toggleIsLoading());
+
+		api.getTransactions().then((transactions) => {
+			dispatch(transactionsSlice.actions.setData(transactions));
+			dispatch(transactionsSlice.actions.toggleIsLoading());
+		});
+	}, [dispatch]);
 
 	return (
 		<div className="app">
@@ -40,7 +53,6 @@ export function App() {
 				<Route path="/">
 					<WIthMobile>
 						{(isMobile) => {
-							console.log("isMobile", isMobile);
 							return <HomePage />;
 						}}
 					</WIthMobile>
@@ -158,7 +170,6 @@ function Sidebar() {
 
 function Overview() {
 	const context = useContext(AuthContext);
-	console.log("overview", context);
 
 	return (
 		<h1 className="page">
@@ -196,7 +207,6 @@ export function Transactions() {
 		},
 	]);
 
-	console.log("APP render", transactions);
 	return (
 		<div className="transactions">
 			<div className="">

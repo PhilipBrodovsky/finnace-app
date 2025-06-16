@@ -8,8 +8,6 @@ export function WithProtectedRoute(Component) {
 	function PrivateRoute(props) {
 		const { user } = useAuth();
 
-		console.log("user", user);
-
 		if (!user) {
 			return <Redirect to="/login" />;
 		}

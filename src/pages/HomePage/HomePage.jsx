@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 import { BudgetCard } from "../../components/BudgetCard/BudgetCard";
 import { WithProtectedRoute } from "../../util-components/ProtectedRoute";
+import { Card } from "../../components/Card/Card";
 
 const budget = {
 	id: "1",
@@ -10,7 +12,9 @@ const budget = {
 };
 
 function HomePage(props) {
-	console.log("HomePage", props);
+	const { isLoading, data: transactions } = useSelector((state) => state.transactions);
+
+	console.log("transactions", transactions);
 
 	return (
 		<div
@@ -20,6 +24,17 @@ function HomePage(props) {
 				margin: 10,
 			}}
 		>
+			<Card className="">
+				{isLoading && "loading..."}
+				{!isLoading &&
+					transactions.map((transaction) => {
+						return (
+							<div key={transaction.id} className="">
+								{transaction.name} ({transaction.amount})
+							</div>
+						);
+					})}
+			</Card>
 			<BudgetCard budget={budget}>
 				<BudgetCard.Title />
 				<BudgetCard.Progress />

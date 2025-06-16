@@ -1,8 +1,8 @@
 // STATE MANAGEMENT
 let state = {
-	user: null,
-	transactions: [{ name: "sell ice scream" }],
-	isMobile: false,
+	transactions: [{ name: "sell ice scream" }], // transactions reducer
+	user: null, // reducer user
+	isMobile: false, // isMobile reducer
 };
 
 let listeners = [];
@@ -38,7 +38,9 @@ export function dispatch(action) {
 
 	state = reducer(state, action);
 
-	// call every subscribtions
+	// middelware (action,state,newState)
+
+	// call EVERY subscribtions
 	listeners.forEach((listener) => {
 		listener(state); // call listener
 	});
@@ -83,4 +85,8 @@ document.body.innerHTML = JSON.stringify(state);
 function logNewState(state) {
 	console.log("logNewState callback", state);
 	document.body.innerHTML = JSON.stringify(state);
+	// app.render(
+	//     	<AuthContextProvider>
+	//     		<App />
+	//     	</AuthContextProvider>)
 }

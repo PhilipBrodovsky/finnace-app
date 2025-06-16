@@ -3,13 +3,17 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { App } from "./App";
 import { AuthContextProvider } from "./contexts/AuthContext/AuthContext";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const rootEl = document.getElementById("root");
 const app = createRoot(rootEl);
 
 // main render
 app.render(
-	<AuthContextProvider>
-		<App />
-	</AuthContextProvider>
+	<Provider store={store}>
+		<AuthContextProvider>
+			<App />
+		</AuthContextProvider>
+	</Provider>
 );
