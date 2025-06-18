@@ -1,0 +1,1 @@
+export { getSumTransactions } from "./getSumTransactions";

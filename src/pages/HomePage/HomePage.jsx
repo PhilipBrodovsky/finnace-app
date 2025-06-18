@@ -29,6 +29,7 @@ function HomePage(props) {
 		>
 			<div>
 				<button
+					data-testid="save"
 					onClick={() => {
 						const transaction = transactions[0];
 
@@ -45,7 +46,11 @@ function HomePage(props) {
 				{!isLoading &&
 					transactions.map((transaction) => {
 						return (
-							<div key={transaction.id} className="">
+							<div
+								data-testid={`transaction-${transaction.id}`}
+								key={transaction.id}
+								className=""
+							>
 								{transaction.name} ({transaction.amount})
 							</div>
 						);
