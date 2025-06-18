@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BudgetCard } from "../../components/BudgetCard/BudgetCard";
 import { WithProtectedRoute } from "../../util-components/ProtectedRoute";
 import { Card } from "../../components/Card/Card";
+import { transactionsSlice } from "../../store/transactionsSlice";
 
 const budget = {
 	id: "1",
@@ -16,6 +17,8 @@ function HomePage(props) {
 
 	console.log("transactions", transactions);
 
+	const dispatch = useDispatch();
+
 	return (
 		<div
 			style={{
@@ -24,6 +27,19 @@ function HomePage(props) {
 				margin: 10,
 			}}
 		>
+			<div>
+				<button
+					onClick={() => {
+						const transaction = transactions[0];
+
+						dispatch(
+							transactionsSlice.actions.setTransaction({ ...transaction, ...{ amount: 70 } })
+						);
+					}}
+				>
+					Save
+				</button>
+			</div>
 			<Card className="">
 				{isLoading && "loading..."}
 				{!isLoading &&

@@ -10,8 +10,19 @@ export const transactionsSlice = createSlice({
 		setData(state, action) {
 			state.data = action.payload;
 		},
+
+		setTransaction(state, action) {
+			let index = state.data.findIndex((t) => t.id === action.payload.id);
+			state.data[index] = action.payload;
+		},
+
 		toggleIsLoading(state) {
 			state.isLoading = !state.isLoading;
+		},
+	},
+	selectors: {
+		selectTransactions(state) {
+			return state;
 		},
 	},
 });

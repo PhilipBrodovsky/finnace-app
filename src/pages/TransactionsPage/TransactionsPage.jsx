@@ -27,6 +27,7 @@ const _TransactionsPage = memo(function TransactionsPage() {
 
 	return (
 		<div className="TransactionsPage">
+			<button>save</button>
 			{transactions.map((transaction, indx) => {
 				return (
 					<div key={indx} className="">
@@ -34,6 +35,7 @@ const _TransactionsPage = memo(function TransactionsPage() {
 					</div>
 				);
 			})}
+			<div></div>
 		</div>
 	);
 });
