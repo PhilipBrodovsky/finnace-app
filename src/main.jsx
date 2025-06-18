@@ -6,6 +6,8 @@ import { AuthContextProvider } from "./contexts/AuthContext/AuthContext";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
+console.log("mode", import.meta.env.MODE);
+
 const rootEl = document.getElementById("root");
 const app = createRoot(rootEl);
 
